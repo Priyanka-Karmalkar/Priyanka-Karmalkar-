@@ -1,0 +1,17 @@
+Client API Request
+    |
+    v
+Existing Billing Record API
+    |
+    +---> Cosmos DB (hot data)
+    |         |
+    |         +---> Record found -> Return
+    |
+    +---> Record not found -> Call RestoreRecordFunction
+                                    |
+                                    v
+                             Azure Blob Storage (archived data)
+                                    |
+                                    v
+                             Return record to API client
+                             
